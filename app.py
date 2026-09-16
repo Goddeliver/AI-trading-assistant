@@ -8,6 +8,9 @@ HTML = """
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="manifest" href="/manifest.json">
+
+
     <title>AI Trading Assistant</title>
 </head>
 <body>
