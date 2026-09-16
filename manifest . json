@@ -1,0 +1,11 @@
+{
+  "name": "AI Trading Assistant",
+  "short_name": "Trading AI",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "description": "AI assistant for learning forex and trading concepts",
+  "icons": []
+}
+
