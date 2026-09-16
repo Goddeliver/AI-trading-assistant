@@ -39,7 +39,7 @@ def home():
 
         try:
             response = requests.post(
-                "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent",
+                "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent",
                 headers={
                     "x-goog-api-key": api_key,
                     "Content-Type": "application/json"
@@ -51,7 +51,7 @@ def home():
                                 "You are a helpful AI trading assistant. "
                                 "Explain forex and trading concepts clearly "
                                 "and simply. Give educational information, "
-                                "not guaranteed financial advice.\\n\\n"
+                                "not guaranteed financial advice.\n\n"
                                 "User question: " + question
                             )
                         }]
@@ -71,6 +71,6 @@ def home():
 
     return render_template_string(HTML, answer=answer)
 
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
-
