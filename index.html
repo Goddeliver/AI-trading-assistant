@@ -2,27 +2,40 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Forex AI Assistant</title>
+<title>GodivaFX001 AI Assistant</title>
 <style>
 body{font-family:Arial;background:#111;color:#fff;padding:20px}
 #chat{max-width:600px;margin:auto;background:#222;padding:20px;border-radius:10px}
 input{width:70%;padding:12px;border-radius:5px;border:none}
-button{padding:12px 15px;background:#00ff88;border:none;border-radius:5px;font-weight:bold}
+button{padding:12px 15px;background:#00ff88;border:none;border-radius:5px;font-weight:bold;cursor:pointer}
 #ans{margin-top:20px;background:#333;padding:15px;border-radius:5px;min-height:50px}
+.brand{color:#00ff88;font-size:13px}
+.footer{margin-top:30px;text-align:center;font-size:11px;color:#666;border-top:1px solid #333;padding-top:15px}
 </style>
 </head>
 <body>
 <div id="chat">
-<h2>Forex AI Assistant</h2>
-<input id="q" placeholder="Ask e.g. what is order block?">
+<h2>GodivaFX001 AI</h2>
+<p class="brand">Created by GodivaFX001 | Forex Mentor</p>
+<p style="font-size:12px;color:#aaa;">Your Smart Forex Assistant from Enugu, Nigeria</p>
+
+<input id="q" placeholder="Ask e.g. should I buy gold?">
 <button onclick="askAI()">Ask</button>
-<div id="ans">Ask me anything about forex!</div>
+<div id="ans">Welcome! I am AI created by GodivaFX001. Ask me anything about forex!</div>
+
+<div class="footer">
+<b>GodivaFX001 AI © 2026</b><br>
+Built by GodivaFX001 | All Rights Reserved<br>
+Contact: WhatsApp / Telegram - GodivaFX001
 </div>
+</div>
+
 <script>
 async function askAI(){
   let question = document.getElementById('q').value;
   let ans = document.getElementById('ans');
-  ans.innerText = "Thinking...";
+  if(!question){ ans.innerText="Type a question first!"; return; }
+  ans.innerText = "GodivaFX001 AI is thinking...";
   let res = await fetch('/ask', {
     method:'POST',
     headers:{'Content-Type':'application/json'},
@@ -34,7 +47,4 @@ async function askAI(){
 </script>
 </body>
 </html>
-
-
-
 
