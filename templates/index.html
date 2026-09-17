@@ -6,31 +6,37 @@
 <title>GodivaFX001 AI</title>
 <style>
 body{background:#0a0a0a;color:white;font-family:Arial;margin:0;display:flex;flex-direction:column;height:100vh}
-header{background:#111;padding:15px;text-align:center;border-bottom:2px solid gold}
+header{background:#111;padding:15px;text-align:center;border-bottom:2px solid gold;display:flex;align-items:center;justify-content:center;gap:15px;flex-direction:column}
 h1{color:gold;margin:0}
 #chat{flex:1;overflow-y:auto;padding:20px}
-.msg{margin:10px 0;padding:12px;border-radius:10px;max-width:85%}
+.msg{margin:10px 0;padding:12px;border-radius:10px;max-width:80%}
 .user{background:#2a2a2a;margin-left:auto}
 .ai{background:#1a1a1a;border-left:3px solid gold}
 #inputArea{display:flex;padding:15px;background:#111}
-#userInput{flex:1;padding:12px;border-radius:25px;border:1px solid #333;background:#222;color:white}
-#sendBtn{margin-left:10px;padding:12px 25px;border-radius:25px;border:none;background:gold;color:black;font-weight:bold}
+#userInput{flex:1;padding:12px;border-radius:25px;border:none;background:#222;color:white}
+#sendBtn{margin-left:10px;padding:12px 20px;border-radius:25px;border:none;background:gold;color:black;font-weight:bold;cursor:pointer}
 </style>
 </head>
 <body>
-<header><h1>GodivaFX001 AI</h1><p>Forex Mentor from Enugu</p></header>
-<div id="chat"><div class="msg ai">Welcome Boss! Ask me about order block, FVG, BOS, CHOCH, gold.</div></div>
+<header>
+<img src="/static/logo.png" style="width:80px;height:80px;border-radius:50%;border:2px solid gold;object-fit:cover;">
+<h1>GodivaFX001 AI</h1>
+<p>Taurus Power From Virgo ♍</p>
+</header>
+<div id="chat"><div class="msg ai">Welcome Boss! Ask me about order blocks, FVG, liquidity, or your setup.</div></div>
 <div id="inputArea"><input id="userInput" placeholder="Ask forex question..."><button id="sendBtn" onclick="send()">Send</button></div>
 <script>
 const chat=document.getElementById('chat');const input=document.getElementById('userInput');
 function addMsg(t,c){let d=document.createElement('div');d.className='msg '+c;d.innerText=t;chat.appendChild(d);chat.scrollTop=chat.scrollHeight}
-async function send(){let m=input.value.trim();if(!m)return;addMsg(m,'user');input.value='';addMsg('Thinking...','ai');try{let r=await fetch('/ask',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:m})});let d=await r.json();chat.lastChild.remove();addMsg(d.answer,'ai')}catch(e){chat.lastChild.remove();addMsg('Error, check logs','ai')}}}
+async function send(){let q=input.value.trim();if(!q)return;addMsg(q,'user');input.value='';let res=await fetch('/ask',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({question:q})});let data=await res.json();addMsg(data.answer,'ai')}
 input.addEventListener('keypress',e=>{if(e.key==='Enter')send()});
 </script>
 </body>
 </html>
 
+...
 
+[Message clipped]  View entire message
 
 
 
