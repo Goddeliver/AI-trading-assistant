@@ -31,7 +31,8 @@ def ask():
                 return jsonify({"answer": v})
         return jsonify({"answer": "I can teach you: market structure, order block, fvg, liquidity, bos, choch, support resistance, pip, lot. What do you want to learn?"})
     except Exception as e:
-        return jsonify({"answer": f"Error: {str(e)}"})
+
+return jsonify({"answer": "I am GodivaFX001 AI - Created by GodivaFX001, Forex Mentor from Enugu, Nigeria. I can teach: market structure, order block, fvg, liquidity, bos, choch, gold/xauusd, pip, lot. Ask me anything!"})
 
 
 
