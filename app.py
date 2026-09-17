@@ -7,8 +7,7 @@ TK = os.getenv("TWELVEDATA_API_KEY","").strip()
 
 def price():
     try:
-        u = "https://api.twelvedata.com/price"
-        u = u + "?symbol=XAU/USD&apikey=" + TK
+        u = "https://api.twelvedata.com/price?symbol=XAU/USD&apikey=" + TK
         r = requests.get(u,timeout=8).json()
         return r.get("price","---")
     except:
@@ -34,7 +33,7 @@ body{background:#000;color:#d4af37;text-align:center;padding:20px;font-family:Ar
 button{background:#d4af37;color:#000;padding:12px;border:0;border-radius:8px;font-weight:bold;width:90%}
 input{padding:12px;width:85%;border-radius:8px;border:0;margin:8px}
 #ans{color:#fff;white-space:pre-wrap;text-align:left;background:#222;padding:12px;border-radius:8px}
-.logo{width:100px;height:100px;border-radius:50%;border:2px solid #d4af37}
+.logo{width:110px;height:110px;border-radius:50%;border:2px solid #d4af37}
 </style>
 </head>
 <body>
@@ -42,7 +41,7 @@ input{padding:12px;width:85%;border-radius:8px;border:0;margin:8px}
 <h1>GODIVAFX001 AI</h1>
 <div class="card">GOLD: ${{price}}</div>
 <div class="card">
-<input id="q" placeholder="Buy or Sell? Turtle soup?">
+<input id="q" placeholder="Should I buy gold? What is turtle soup?">
 <br><button onclick="ask()">Ask AI</button>
 <p id="ans"></p>
 </div>
@@ -50,7 +49,7 @@ input{padding:12px;width:85%;border-radius:8px;border:0;margin:8px}
 async function ask(){
  let q=document.getElementById('q').value;
  if(!q){alert('type');return}
- document.getElementById('ans').innerText='Analyzing...';
+ document.getElementById('ans').innerText='GODIVAFX001 AI analyzing...';
  let r=await fetch('/ask',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({question:q})});
  let d=await r.json();
  document.getElementById('ans').innerText=d.answer;
@@ -68,18 +67,15 @@ def home():
 def ask_ai():
     q = request.json.get("question","")
     p = price()
-    sys_msg = "You are GODIVAFX001 AI forex expert."
-    sys_msg = sys_msg + " Answer all forex questions."
-    sys_msg = sys_msg + " Never refuse."
-    user_msg = "Gold " + str(p) + " Question: " + str(q)
-    user_msg = user_msg + " Give BUY SELL WAIT if needed."
+    sys_msg = "You are GODIVAFX001 AI forex expert. Answer all forex questions. Never refuse. Give BUY SELL advice."
+    user_msg = "Gold price " + str(p) + ". Question: " + str(q) + ". If buy/sell, give decision."
 
     headers = {
         "Authorization": "Bearer " + GK,
         "Content-Type": "application/json"
     }
     payload = {
-        "model": "qwen/qwen3-32b",
+        "model": "llama-3.3-70b-versatile",
         "messages": [
             {"role": "system", "content": sys_msg},
             {"role": "user", "content": user_msg}
